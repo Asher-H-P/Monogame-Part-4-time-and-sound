@@ -15,6 +15,7 @@ namespace Monogame_Part_4_time_and_sound
         Rectangle bombRect;
         SoundEffect explode;
         SoundEffect b17;
+        int mepbsb = 1;
         float seconds;
         float startTime;
         MouseState mouseState;
@@ -69,11 +70,15 @@ namespace Monogame_Part_4_time_and_sound
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+            while (mepbsb == 1)
+            {
+                b17.Play();
+                mepbsb++;
+            }
             _spriteBatch.Draw(bombTexture, bombRect, Color.White);
             _spriteBatch.DrawString(timer, seconds.ToString("00.0"), new Vector2(250, 200), Color.Crimson);
             if (seconds >= 15)
             {
-                b17.Play();
                 explode.Play();
                 explode.Equals(true);
                 startTime = (float)gameTime.TotalGameTime.TotalSeconds + 10;
